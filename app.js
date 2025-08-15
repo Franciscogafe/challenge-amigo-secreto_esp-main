@@ -3,17 +3,41 @@ let listaDeAmigos = [];
 
 console.log(listaDeAmigos);
 
+function nombreRepetido() {
+    let aux = 0;
+    //trim() -> Elimina los espacios en blanco al inicio y al final de un string.
+    //toLowerCase() -> Convierte todas las letras de un string a minúsculas, para evitar problemas entre Mayusculas y minusculas.
+    let nuevoAmigo = document.getElementById('amigo').value.trim().toLowerCase();
+    
+    while(aux < listaDeAmigos.length) {
+        //Verifica si el nombre esta en la lista de amigos
+        if (nuevoAmigo === listaDeAmigos[aux].toLowerCase()) {
+            alert('Nombre repetido');
+            //Está repetido
+            return true;
+        }
+        aux++;
+    }
+    //No esta repetido
+    return false;
+}
+
 function agregarAmigo() {
-    if(document.getElementById('amigo').value == '') {
+    //Asigna el nombre a una variable
+    let nuevoAmigo = document.getElementById('amigo').value.trim();
+
+    //Verifica que el nombre sea valido y no repetido
+    if(nuevoAmigo === '' || nombreRepetido()) {
         alert("Por favor, ingrese un nombre valido");
-    }else{
-        let nuevoAmigo = document.getElementById('amigo').value;
+    } else {            
+        //Agrega el nombre a la lista de amigos
         listaDeAmigos.push(nuevoAmigo);
         limpiarCaja();
-        console.log(listaDeAmigos);
+        //console.log(listaDeAmigos);
         actualizarListaDeAmigos();
     }    
 }
+
 
 function actualizarListaDeAmigos() {    
     
