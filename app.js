@@ -16,12 +16,7 @@ function agregarAmigo() {
 }
 
 function actualizarListaDeAmigos() {    
-    //Verifica que la lista no este vacia
-    if(!listaDeAmigos || listaDeAmigos.length === 0 ){
-        console.log('La lista de amigos está vacia');
-        return;
-    }
-
+    
     //Obtener el elemento de la lista
     let lista = document.getElementById("listaAmigos");
 
@@ -37,6 +32,21 @@ function actualizarListaDeAmigos() {
         //Agrega a la lista ul
         lista.appendChild(li);
     }
+}
+
+function sortearAmigo() {
+    
+    //Verifica que la lista no este vacia
+    if(!listaDeAmigos || listaDeAmigos.length === 0 ){
+        console.log('La lista de amigos está vacia');
+        return;
+    }
+    //Genera número aleatorio
+    let indiceAleatorio = Math.floor(Math.random()*listaDeAmigos.length);
+        //Obtener el elemento
+    let resultado = document.getElementById("resultado");
+    //Mostrar el resultado
+    resultado.innerHTML = `<li>${listaDeAmigos[indiceAleatorio]}</li>`;
 }
 
 function limpiarCaja() {
